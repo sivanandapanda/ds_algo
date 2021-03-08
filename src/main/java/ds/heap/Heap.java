@@ -2,8 +2,8 @@ package ds.heap;
 
 public class Heap {
 
-    private int[] heap;
     private int size;
+    private final int[] heap;
 
     public Heap(int capacity) {
         heap = new int[capacity];
