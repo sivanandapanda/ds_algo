@@ -66,4 +66,25 @@ class HeapTest {
         assertEquals(80, heap.delete(0));
         assertEquals(68, heap.peek());
     }
+
+    @Test
+    void should_sort_heap() {
+        Heap heap = new Heap(15);
+
+        heap.insert(80);
+        heap.insert(75);
+        heap.insert(60);
+        heap.insert(68);
+        heap.insert(55);
+        heap.insert(40);
+        heap.insert(52);
+        heap.insert(67);
+
+        System.out.println(heap.printHeap());
+
+        heap.sort();
+
+        System.out.println(heap.printHeap());
+        assertEquals("40, 52, 55, 60, 67, 68, 75, 80, ", heap.printHeap());
+    }
 }
