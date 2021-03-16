@@ -26,7 +26,8 @@ public class BubbleSortTest {
 
     @Test
     void random_sorting() {
-        Integer[] arr = new Integer[1_000_000];
+        //Integer[] arr = new Integer[1_000_000];
+        Integer[] arr = new Integer[1_000];
 
         IntStream.range(0, arr.length).forEach(i -> arr[i] = new Random().nextInt(1000));
 

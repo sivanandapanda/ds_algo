@@ -12,7 +12,7 @@ public class DynamicArray<T> implements Iterable<T> {
     private int capacity;
 
     public DynamicArray() {
-        this(2);
+        this(8);
     }
 
     public DynamicArray(int capacity) {
