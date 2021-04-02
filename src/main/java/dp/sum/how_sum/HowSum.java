@@ -1,4 +1,4 @@
-package dp.how_sum;
+package dp.sum.how_sum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
