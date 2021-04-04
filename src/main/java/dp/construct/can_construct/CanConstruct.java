@@ -2,6 +2,7 @@ package dp.construct.can_construct;
 
 import dp.model.DpCalcType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,9 @@ public class CanConstruct {
         switch (dpCalcType) {
             case MEMO:
                 canConstruct = new MemoCanConstruct();
+                break;
+            case TABULATION:
+                canConstruct = new TabCanConstruct();
                 break;
             case RECURSIVE:
             default:
@@ -75,6 +79,20 @@ public class CanConstruct {
             map.put(targetWord, false);
 
             return false;
+        }
+    }
+
+    private static class TabCanConstruct implements ICanConstruct {
+
+        @Override
+        public boolean find(String targetWord, List<String> words) {
+            boolean[] tab = new boolean[targetWord.length() + 1];
+            Arrays.fill(tab, false);
+            tab[0] = true;
+
+
+
+            return tab[targetWord.length()];
         }
     }
 }

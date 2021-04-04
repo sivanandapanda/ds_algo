@@ -2,10 +2,7 @@ package dp.sum.best_sum;
 
 import dp.model.DpCalcType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BestSum {
 
@@ -15,6 +12,9 @@ public class BestSum {
         switch (dpCalcType) {
             case MEMO:
                 this.bestSum = new MemoBestSum();
+                break;
+            case TABULATION:
+                this.bestSum = new TabBestSum();
                 break;
             case RECURSIVE:
             default:
@@ -88,6 +88,38 @@ public class BestSum {
             map.put(targetSum, shortestCombination);
 
             return shortestCombination;
+        }
+    }
+
+    private static class TabBestSum implements IBestSum {
+
+        @Override
+        public List<Integer> find(int targetSum, int[] numbers) {
+            List<Integer>[] tab = new List[targetSum+1];
+            tab[0] = new ArrayList<>();
+
+            for (int i = 0; i <= targetSum; i++) {
+                if(tab[i] != null) {
+                    for (int num : numbers) {
+                        try {
+                            if(i+num <= targetSum) {
+                                var combinations = new ArrayList<>(tab[i]);
+                                combinations.add(num);
+                                if(tab[i + num] == null || tab[i + num].size() > combinations.size()) {
+                                    tab[i + num] = combinations;
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("targetSum = " + targetSum + ", i = " + i + ", num = " + num);
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            System.out.println(Arrays.toString(tab));
+
+            return tab[targetSum];
         }
     }
 

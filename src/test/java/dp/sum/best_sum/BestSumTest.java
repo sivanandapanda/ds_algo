@@ -47,4 +47,18 @@ class BestSumTest {
         assertEquals(List.of(25, 25, 25, 25), bestSum.find(100, arr));
     }
 
+    @Test
+    void test_tab_100() {
+        var bestSum = new BestSum(DpCalcType.TABULATION);
+        int[] arr = {1, 2, 5, 25};
+        assertEquals(List.of(25, 25, 25, 25), bestSum.find(100, arr));
+    }
+
+    @Test
+    void test_tab_8_2() {
+        var bestSum = new BestSum(DpCalcType.TABULATION);
+        int[] arr = {1, 4, 5};
+        assertEquals(List.of(4, 4), bestSum.find(8, arr));
+    }
+
 }

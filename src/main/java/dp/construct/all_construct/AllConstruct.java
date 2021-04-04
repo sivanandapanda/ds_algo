@@ -1,12 +1,13 @@
 package dp.construct.all_construct;
 
-import dp.construct.count_construct.CountConstruct;
 import dp.model.DpCalcType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 public class AllConstruct {
 
@@ -37,10 +38,21 @@ public class AllConstruct {
         @Override
         public List<List<String>> find(String targetWord, List<String> words) {
             if ("".equals(targetWord)) {
-                return new ArrayList<>();
+                var lists = new ArrayList<List<String>>();
+                lists.add(new ArrayList<>());
+                return lists;
             }
 
-            return null;
+            var result = new ArrayList<List<String>>();
+
+            for (String word : words) {
+                if (targetWord.indexOf(word) == 0) {
+                    var suffix = targetWord.substring(word.length());
+                    result.addAll(find(suffix, words).stream().peek(l -> l.add(0, word)).collect(toList()));
+                }
+            }
+
+            return result;
         }
     }
 
@@ -48,7 +60,39 @@ public class AllConstruct {
 
         @Override
         public List<List<String>> find(String targetWord, List<String> words) {
-            return null;
+            var map = new HashMap<String, List<List<String>>>();
+            var result = find(targetWord, words, map);
+            System.out.println(map);
+            return result;
+        }
+
+        private List<List<String>> find(String targetWord, List<String> words, Map<String, List<List<String>>> map) {
+            if (map.containsKey(targetWord)) return map.get(targetWord);
+
+            if ("".equals(targetWord)) {
+                var lists = new ArrayList<List<String>>();
+                lists.add(new ArrayList<>());
+                return lists;
+            }
+
+            var result = new ArrayList<List<String>>();
+
+            for (String word : words) {
+                if (targetWord.indexOf(word) == 0) {
+                    var suffix = targetWord.substring(word.length());
+                    result.addAll(find(suffix, words, map)
+                            .stream()
+                            .map(l -> {
+                                var newList = new ArrayList<>(l);
+                                newList.add(0, word);
+                                return newList;
+                            })
+                            .collect(toList()));
+                }
+            }
+
+            map.put(targetWord, new ArrayList<>(result));
+            return result;
         }
     }
 
