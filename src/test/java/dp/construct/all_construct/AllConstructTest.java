@@ -1,6 +1,7 @@
 package dp.construct.all_construct;
 
 import dp.model.DpCalcType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -110,6 +111,16 @@ class AllConstructTest {
     void test_tab_eeeeef() {
         var allConstruct = new AllConstruct(DpCalcType.TABULATION);
         var lists = allConstruct.find("eeeeeeeeeeeef",
+                List.of("e", "ee", "eee", "eeee", "eeeeee", "eeeeeeeeeee"));
+        System.out.println(lists);
+        assertEquals(0, lists.size());
+    }
+
+    @Test
+    @Disabled
+    void test_tab_eeeeef_longer_very_very_slow() {
+        var allConstruct = new AllConstruct(DpCalcType.MEMO);
+        var lists = allConstruct.find("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef",
                 List.of("e", "ee", "eee", "eeee", "eeeeee", "eeeeeeeeeee"));
         System.out.println(lists);
         assertEquals(0, lists.size());
