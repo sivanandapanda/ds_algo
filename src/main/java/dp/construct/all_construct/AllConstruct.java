@@ -2,10 +2,7 @@ package dp.construct.all_construct;
 
 import dp.model.DpCalcType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
@@ -17,6 +14,9 @@ public class AllConstruct {
         switch (dpCalcType) {
             case MEMO:
                 allConstruct = new MemoAllConstruct();
+                break;
+            case TABULATION:
+                allConstruct = new TabAllConstruct();
                 break;
             case RECURSIVE:
             default:
@@ -96,4 +96,36 @@ public class AllConstruct {
         }
     }
 
+    private static class TabAllConstruct implements IAllConstruct {
+
+        @Override
+        public List<List<String>> find(String targetWord, List<String> words) {
+            List<List<String>>[] tab = new List[targetWord.length() + 1];
+            Arrays.fill(tab, new ArrayList<List<String>>());
+            var list0 = new ArrayList<List<String>>();
+            list0.add(new ArrayList<>());
+            tab[0] = list0;
+
+            for (int i = 0; i <= targetWord.length(); i++) {
+                if(tab[i] != null) {
+                    for (String word : words) {
+                        if(targetWord.substring(i).indexOf(word) == 0) {
+                            if(i+word.length() <= targetWord.length()) {
+                                var existingList = new ArrayList<>(tab[i + word.length()]);
+
+                                var newList = new ArrayList<>(tab[i]).stream().peek(l -> l.add(word)).collect(toList());
+
+                                var list = new ArrayList<>(newList);
+                                list.addAll(existingList);
+
+                                tab[i + word.length()] = list;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return tab[targetWord.length()];
+        }
+    }
 }

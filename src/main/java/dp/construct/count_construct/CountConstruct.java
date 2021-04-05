@@ -2,6 +2,7 @@ package dp.construct.count_construct;
 
 import dp.model.DpCalcType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,9 @@ public class CountConstruct {
         switch (dpCalcType) {
             case MEMO:
                 countConstruct = new MemoCanConstruct();
+                break;
+            case TABULATION:
+                countConstruct = new TabCountConstruct();
                 break;
             case RECURSIVE:
             default:
@@ -75,6 +79,30 @@ public class CountConstruct {
             map.put(targetWord, totalCount);
 
             return totalCount;
+        }
+    }
+
+    private static class TabCountConstruct implements ICountConstruct {
+
+        @Override
+        public int count(String targetWord, List<String> words) {
+            int[] tab = new int[targetWord.length() + 1];
+            Arrays.fill(tab, 0);
+            tab[0] = 1;
+
+            for (int i = 0; i <= targetWord.length(); i++) {
+                if(tab[i] > 0) {
+                    for (String word : words) {
+                        if(targetWord.substring(i).indexOf(word) == 0) {
+                            if(i+word.length() <= targetWord.length()) {
+                                tab[i + word.length()] += tab[i];
+                            }
+                        }
+                    }
+                }
+            }
+
+            return tab[targetWord.length()];
         }
     }
 }

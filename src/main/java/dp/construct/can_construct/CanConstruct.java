@@ -90,7 +90,18 @@ public class CanConstruct {
             Arrays.fill(tab, false);
             tab[0] = true;
 
+            for (int i = 0; i <= targetWord.length(); i++) {
+                if(tab[i]) {
+                    for (String word : words) {
+                        if(targetWord.substring(i).indexOf(word) == 0) {
+                            if(i+word.length() <= targetWord.length()) {
+                                tab[i + word.length()] = true;
+                            }
+                        }
+                    }
+                }
 
+            }
 
             return tab[targetWord.length()];
         }
