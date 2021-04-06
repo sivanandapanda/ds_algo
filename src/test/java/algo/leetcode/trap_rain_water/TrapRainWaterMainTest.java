@@ -42,4 +42,10 @@ class TrapRainWaterMainTest {
         assertEquals(26, TrapRainWaterMain.trap(heightArr));
     }
 
+    @Test
+    void test_7() {
+        int[] heightArr = {1,8,6,2,5,4,8,3,7};
+        assertEquals(19, TrapRainWaterMain.trap(heightArr));
+    }
+
 }
