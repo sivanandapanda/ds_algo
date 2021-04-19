@@ -2,7 +2,6 @@ package dp.on_the_way_to_home.grid_traveler;
 
 import dp.model.DpCalcType;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
