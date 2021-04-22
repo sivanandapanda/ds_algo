@@ -1,4 +1,4 @@
-package algo.leetcode;
+package algo.leetcode.paratentheses;
 
 import java.util.HashMap;
 import java.util.Map;

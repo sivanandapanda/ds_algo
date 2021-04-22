@@ -1,4 +1,4 @@
-package algo.leetcode;
+package algo.leetcode.paratentheses;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidParenthesesTest {
-
     @ParameterizedTest
     @CsvSource(value = {"(),true", "(],false", "()[]{}, true", "{[]}, true", "([)], false",",true"})
     void test(String input, boolean expected) {
@@ -33,5 +32,4 @@ class ValidParenthesesTest {
         ValidParentheses validParentheses = new ValidParentheses();
         assertTrue(validParentheses.isValid("random"));
     }
-
 }
