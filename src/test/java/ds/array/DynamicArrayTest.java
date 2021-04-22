@@ -3,8 +3,20 @@ package ds.array;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //todo fix test case failures
 public class DynamicArrayTest {
+
+    @Test
+    public void test1() {
+        List<Integer> list = new ArrayList<>(16);
+        list.add(0, 1);
+        list.add(1, 1);
+        var integer = list.get(1);
+        System.out.println(integer);
+    }
 
     @Test
     public void create_array() {
