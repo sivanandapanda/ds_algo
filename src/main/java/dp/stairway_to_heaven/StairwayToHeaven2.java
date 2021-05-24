@@ -3,6 +3,8 @@ package dp.stairway_to_heaven;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.min;
+
 public class StairwayToHeaven2 {
 
     private final int[] fees;
@@ -25,8 +27,8 @@ public class StairwayToHeaven2 {
             return cache.get(n);
         } else {
             int answer = 0;
-            for(int i = 3; i <= n; i++){
-                answer = Math.min((find(i - 1, cache) + fees[i - 1]), Math.min((find(i - 2, cache)  + fees[i - 2]), find(i - 3, cache) + fees[i - 3]));
+            for(int i = 4; i <= n; i++){
+                answer = min((find(i - 1, cache) + fees[i - 1]), min((find(i - 2, cache)  + fees[i - 2]), find(i - 3, cache) + fees[i - 3]));
             }
             cache.put(n, answer);
             return answer;
