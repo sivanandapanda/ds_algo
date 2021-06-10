@@ -1,7 +1,5 @@
 package dp.number_splitter;
 
-import java.util.Arrays;
-
 import static java.lang.Math.max;
 
 public class NumberSplitter {

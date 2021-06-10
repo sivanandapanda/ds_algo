@@ -9,7 +9,7 @@ import java.util.Queue;
  * Using stack and queue, determine whether a string is a palindrome
  * Ignore case, ignore punctuation and spaces
  */
-public class ChallengeFive {
+public class CheckPalindromeUsingStackAndQueue {
 
     public static void main(String[] args) {
         String string = "Racecar";

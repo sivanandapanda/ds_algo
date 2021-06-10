@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Recursive insertion sort
  */
-public class ChallengeTwo {
+public class RecursiveInsertionSort {
 
     public static void main(String[] args) {
         int[] intArray = {20, 35, -15, 7, 55, 1, -22};

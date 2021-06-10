@@ -6,7 +6,7 @@ import ds.stack.SimpleListStack;
  * Using stack, determine whether a string is a palindrome
  * Ignore case, ignore punctuation and spaces
  */
-public class ChallengeFour {
+public class CheckPalindromeUsingStack {
 
     public static void main(String[] args) {
         //String string = "Racecar";

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Radix sort for strings
  */
-public class ChallengeThree {
+public class StringRedisSort {
 
     public static void main(String[] args) {
         String[] arr = { "bcdef", "dbaqc", "abcde", "omadd", "bbbbb" };
