@@ -1,5 +1,6 @@
-package ds.list;
+package ds.list.linkedlist;
 
+import ds.list.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,5 +40,4 @@ class LinkedListTest {
 
         assertEquals(3, names.size());
     }
-
 }

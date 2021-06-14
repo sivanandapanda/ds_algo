@@ -1,4 +1,4 @@
-package ds.list;
+package ds.list.linkedlist;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
 
