@@ -31,7 +31,95 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public void remove(T data) {
+        if (root == null) {
+            return;
+        }
 
+        remove(data, root);
+    }
+
+    private void remove(T data, Node<T> node) {
+        if(node == null) return;
+
+        if (data.compareTo(node.getData()) < 0) {
+            remove(data, node.getLeftChild());
+        } else if(data.compareTo(node.getData()) > 0) {
+            remove(data, node.getRightChild());
+        } else {
+            if(node.getRightChild() == null && node.getLeftChild() == null) {
+                var parentNode = node.getParentNode();
+
+                if(parentNode != null && parentNode.getLeftChild() == node) {
+                    parentNode.setLeftChild(null);
+                } else if(parentNode != null && parentNode.getRightChild() == node) {
+                    parentNode.setRightChild(null);
+                }
+
+                //may be we want to remove root node
+                if(parentNode == null) {
+                    root = null;
+                }
+
+                //remove the node and make it eligible for GC
+                node = null;
+            }
+
+            //case 2) when we remove items with a single chile
+            else if(node.getLeftChild() == null && node.getRightChild() != null) {
+                var parentNode = node.getParentNode();
+
+                if(parentNode != null && parentNode.getLeftChild() == node) {
+                    parentNode.setLeftChild(node.getRightChild());
+                } else if(parentNode != null && parentNode.getRightChild() == node) {
+                    parentNode.setRightChild(node.getRightChild());
+                }
+
+                //may be we want to remove root node
+                if(parentNode == null) {
+                    root = node.getRightChild();
+                }
+
+                node.getRightChild().setParentNode(parentNode);
+            }
+
+            //case 3) when we remove items with a single chile
+            else if(node.getLeftChild() != null && node.getRightChild() == null) {
+                var parentNode = node.getParentNode();
+
+                if(parentNode != null && parentNode.getLeftChild() == node) {
+                    parentNode.setLeftChild(node.getLeftChild());
+                } else if(parentNode != null && parentNode.getRightChild() == node) {
+                    parentNode.setRightChild(node.getLeftChild());
+                }
+
+                //may be we want to remove root node
+                if(parentNode == null) {
+                    root = node.getLeftChild();
+                }
+
+                node.getLeftChild().setParentNode(parentNode);
+            }
+
+            //case 4) remove 2 children
+            else {
+                //find the oredecessor
+                Node<T> predecessor = getPredecessor(node.getLeftChild());
+
+                T temp = predecessor.getData();
+                predecessor.setData(node.getData());
+                node.setData(temp);
+
+                remove(data, predecessor);
+            }
+        }
+    }
+
+    private Node<T> getPredecessor(Node<T> node) {
+        if(node.getRightChild() != null) {
+            return getPredecessor(node.getRightChild());
+        }
+
+        return node;
     }
 
     @Override

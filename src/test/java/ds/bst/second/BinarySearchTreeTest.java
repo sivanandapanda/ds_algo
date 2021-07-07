@@ -22,6 +22,27 @@ class BinarySearchTreeTest {
 
         assertEquals(1, bst.getMin());
         assertEquals(17, bst.getMax());
+
+        bst.remove(9);
+        bst.traversal();
+
+        bst.remove(17);
+        bst.traversal();
+
+        bst.remove(5);
+        bst.traversal();
+
+        bst.remove(10);
+        bst.traversal();
+
+        bst.remove(2);
+        bst.traversal();
+
+        bst.remove(1);
+        bst.traversal();
+
+        bst.remove(12);
+        bst.traversal();
     }
 
 }
