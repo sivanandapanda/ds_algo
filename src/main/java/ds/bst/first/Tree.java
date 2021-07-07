@@ -1,4 +1,4 @@
-package ds.bst;
+package ds.bst.first;
 
 public class Tree {
 
