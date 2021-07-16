@@ -45,4 +45,144 @@ class BinarySearchTreeTest {
         bst.traversal();
     }
 
+    @Test
+    void compareTrees() {
+        Tree<Integer> tree1 = new BinarySearchTree<>();
+        tree1.insert(10);
+        tree1.insert(5);
+        tree1.insert(2);
+        tree1.insert(1);
+        tree1.insert(12);
+        tree1.insert(9);
+        tree1.insert(17);
+
+        Tree<Integer> tree2 = new BinarySearchTree<>();
+        tree2.insert(10);
+        tree2.insert(2);
+        tree2.insert(5);
+        tree2.insert(9);
+        tree2.insert(1);
+        tree2.insert(12);
+        tree2.insert(17);
+
+        assertFalse(new TreeCompareHelper<Integer>().compareTrees(tree1.getRoot(), tree2.getRoot()));
+    }
+
+    @Test
+    void compareTrees2() {
+        Tree<Integer> tree1 = new BinarySearchTree<>();
+        tree1.insert(10);
+        tree1.insert(5);
+        tree1.insert(2);
+        tree1.insert(1);
+        tree1.insert(12);
+        tree1.insert(9);
+        tree1.insert(17);
+
+        Tree<Integer> tree2 = new BinarySearchTree<>();
+        tree2.insert(10);
+        tree2.insert(5);
+        tree2.insert(2);
+        tree2.insert(9);
+        tree2.insert(1);
+        tree2.insert(12);
+        tree2.insert(17);
+
+        assertTrue(new TreeCompareHelper<Integer>().compareTrees(tree1.getRoot(), tree2.getRoot()));
+    }
+
+    @Test
+    void compareTrees3() {
+        Tree<Integer> tree1 = new BinarySearchTree<>();
+        tree1.insert(10);
+        tree1.insert(5);
+        tree1.insert(2);
+        tree1.insert(1);
+        tree1.insert(12);
+        tree1.insert(19);
+        tree1.insert(17);
+
+        Tree<Integer> tree2 = new BinarySearchTree<>();
+        tree2.insert(10);
+        tree2.insert(5);
+        tree2.insert(2);
+        tree2.insert(9);
+        tree2.insert(1);
+        tree2.insert(12);
+        tree2.insert(17);
+
+        assertFalse(new TreeCompareHelper<Integer>().compareTrees(tree1.getRoot(), tree2.getRoot()));
+    }
+
+    @Test
+    void compareTrees4() {
+        Tree<Integer> tree1 = new BinarySearchTree<>();
+        tree1.insert(10);
+
+        Tree<Integer> tree2 = new BinarySearchTree<>();
+        tree2.insert(10);
+
+        assertTrue(new TreeCompareHelper<Integer>().compareTrees(tree1.getRoot(), tree2.getRoot()));
+    }
+
+    @Test
+    void compareTrees5() {
+        assertTrue(new TreeCompareHelper<Integer>().compareTrees(null, null));
+    }
+
+    @Test
+    void findKthSmallest_inefficient() {
+        Tree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(17);
+
+        assertEquals(5, new TreeFindHelper<Integer>().kthSmallest_inefficient(tree, 3));
+    }
+
+    @Test
+    void findKthSmallest1() {
+        Tree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(17);
+
+        assertEquals(5, new TreeFindHelper<Integer>().kthSmallest(tree, 3));
+    }
+
+    @Test
+    void findKthSmallest2() {
+        Tree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(17);
+
+        assertEquals(17, new TreeFindHelper<Integer>().kthSmallest(tree, 6));
+    }
+
+    @Test
+    void findKthSmallest3() {
+        Tree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(17);
+
+        assertEquals(19, new TreeFindHelper<Integer>().kthSmallest(tree, 7));
+    }
 }
