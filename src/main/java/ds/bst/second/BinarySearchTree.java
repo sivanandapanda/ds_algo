@@ -135,7 +135,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
             return;
         }
 
-        postOrderTraversal(root);
+        inOrderTraversal(root);
         System.out.println();
     }
 

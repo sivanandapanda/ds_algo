@@ -1,5 +1,6 @@
 package ds.bst.second;
 
+import ds.list.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -184,5 +185,35 @@ class BinarySearchTreeTest {
         tree.insert(17);
 
         assertEquals(19, new TreeFindHelper<Integer>().kthSmallest(tree, 7));
+    }
+
+    @Test
+    void findKthSmallest4() {
+        Tree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(17);
+
+        assertNull(new TreeFindHelper<Integer>().kthSmallest(tree, 8));
+    }
+
+    @Test
+    void findFamilyAge() {
+        Tree<Person> tree = new BinarySearchTree<>();
+        tree.insert(new Person(47, "Adam"));
+        tree.insert(new Person(21, "Kevin"));
+        tree.insert(new Person(55, "Joe"));
+        tree.insert(new Person(20, "Arnold"));
+        tree.insert(new Person(34, "Noel"));
+        tree.insert(new Person(23, "Susan"));
+        tree.insert(new Person(38, "Rose"));
+        tree.insert(new Person(68, "Marco"));
+
+        assertEquals(306, new FamilyAgeProblem(tree).findTotalAge());
+
     }
 }

@@ -18,21 +18,24 @@ public class TreeFindHelper<T extends Comparable<T>> {
     }
 
     public T kthSmallest(Tree<T> tree, int k) {
+        if(k > findTreeSize(tree.getRoot())) return null;
+
         return kthSmallest(tree.getRoot(), k);
     }
 
     private T kthSmallest(Node<T> node, int k) {
-        if(k < 1) return null;
+        var leftTreeSize = findTreeSize(node.getLeftChild()) + 1;
 
-        var leftTreeSize = findTreeSize(node.getLeftChild());
-
-        if(k <= leftTreeSize) {
-            return kthSmallest(node.getLeftChild(), k);
-        } else if(k == leftTreeSize+1) {
+        if(k == leftTreeSize) {
             return node.getData();
-        } else {
-            return kthSmallest(node.getRightChild(), k - leftTreeSize - 1);
         }
+
+        if(k < leftTreeSize) {
+            return kthSmallest(node.getLeftChild(), k);
+        } else {
+            return kthSmallest(node.getRightChild(), k - leftTreeSize);
+        }
+
     }
 
     private int findTreeSize(Node<T> node) {
