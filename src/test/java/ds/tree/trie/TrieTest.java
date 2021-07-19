@@ -1,5 +1,7 @@
-package ds.tree;
+package ds.tree.trie;
 
+import ds.tree.trie.Trie;
+import ds.tree.trie.TrieOptimal;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

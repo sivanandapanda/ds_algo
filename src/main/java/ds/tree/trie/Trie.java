@@ -1,4 +1,4 @@
-package ds.tree;
+package ds.tree.trie;
 
 import java.util.ArrayList;
 import java.util.HashMap;

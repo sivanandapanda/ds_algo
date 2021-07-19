@@ -1,4 +1,4 @@
-package ds.tree;
+package ds.tree.trie;
 
 public class TrieOptimal {
 
