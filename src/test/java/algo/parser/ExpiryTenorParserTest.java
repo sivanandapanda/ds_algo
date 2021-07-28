@@ -1,6 +1,6 @@
 package algo.parser;
 
-import algo.external.leetcode.calculator.BasicCalculator;
+import challenge.leetcode.calculator.BasicCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
