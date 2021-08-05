@@ -1,4 +1,4 @@
-package ds.bst.first;
+package ds.tree.bst.first;
 
 import org.junit.jupiter.api.Test;
 

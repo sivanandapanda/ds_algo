@@ -1,4 +1,4 @@
-package ds.bst.second;
+package ds.tree.bst.second;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 

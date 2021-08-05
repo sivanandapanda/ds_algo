@@ -1,4 +1,4 @@
-package ds.bst.second;
+package ds.tree.bst.second;
 
 import ds.list.Person;
 

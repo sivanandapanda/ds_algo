@@ -1,4 +1,4 @@
-package ds.bst.first;
+package ds.tree.bst.first;
 
 public class TreeNode {
 

@@ -1,4 +1,4 @@
-package ds.bst.second;
+package ds.tree.bst.second;
 
 public class TreeFindHelper<T extends Comparable<T>> {
 
