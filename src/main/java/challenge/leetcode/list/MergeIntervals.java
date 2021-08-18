@@ -1,4 +1,4 @@
-package challenge.leetcode.merge;
+package challenge.leetcode.list;
 
 import java.util.*;
 

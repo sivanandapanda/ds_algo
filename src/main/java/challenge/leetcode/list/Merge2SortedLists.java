@@ -1,43 +1,11 @@
-package challenge.leetcode.merge;
+package challenge.leetcode.list;
 
 /**
- * https://leetcode.com/problems/merge-k-sorted-lists/
- * leetcode 23
+ * https://leetcode.com/problems/merge-two-sorted-lists/
+ * leet code 21
  */
-public class MergeKSortedLists {
-    public ListNode mergeKLists(ListNode[] lists) {
-        if(lists == null || lists.length == 0) {
-            return null;
-        }
-
-        if(lists.length == 1) {
-            return lists[0];
-        }
-
-        if(lists.length == 2) {
-            return mergeTwoLists(lists[0], lists[1]);
-        }
-
-        int median = lists.length/2;
-
-        ListNode[] left = new ListNode[median];
-        for (int i = 0; i < median; i++) {
-            left[i] = lists[i];
-        }
-
-        ListNode leftMerged = mergeKLists(left);
-
-        ListNode[] right = new ListNode[lists.length - median];
-        for (int i = median; i < lists.length; i++) {
-            right[i-median] = lists[i];
-        }
-
-        ListNode rightMerged = mergeKLists(right);
-
-        return mergeTwoLists(leftMerged, rightMerged);
-    }
-
-    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+public class Merge2SortedLists {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1 == null && l2 == null) {
             return null;
         } else if(l1 == null) {
