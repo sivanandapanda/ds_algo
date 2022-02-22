@@ -19,10 +19,6 @@ public class ExpiryTenorParser {
         for (int i = 0; i < input.length(); i++) {
             var current = input.charAt(i);
 
-            if(current == ' ') {
-                continue;
-            }
-
             if((current >= '0' && current <= '9') || current == 'Y' || current == 'M' || current == '.') {
                 prevString.append(current);
             } else {

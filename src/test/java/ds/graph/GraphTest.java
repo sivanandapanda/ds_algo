@@ -1,6 +1,5 @@
 package ds.graph;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +22,6 @@ class GraphTest {
         assertEquals("[Mark, Alice, Rob, Bob, Maria]", graph.breadthFirstTraversal("Mark").toString());
     }
 
-    @NotNull
     private Graph createGraph() {
         Graph graph = new Graph();
         graph.addVertex("Bob");
