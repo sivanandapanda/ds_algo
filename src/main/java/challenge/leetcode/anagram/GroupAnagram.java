@@ -8,23 +8,51 @@ import java.util.*;
  */
 public class GroupAnagram {
 
+    //time complexity = (number of items * time taken for sorting) = O(m*nlogn)
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
-        for(String word : strs){
+        for (String word : strs) {
 
             char[] c = word.toCharArray();
             Arrays.sort(c);
             String hash = new String(c);
-            if(map.containsKey(hash)){
+            if (map.containsKey(hash)) {
                 map.get(hash).add(word);
-            }else{
+            } else {
                 List<String> l = new ArrayList<>();
                 l.add(word);
                 map.put(hash, l);
             }
         }
 
-        return new ArrayList<List<String>>(map.values());
+        return new ArrayList<>(map.values());
+    }
+
+    //time complexity = (number of items * avg length of strings) = O(m*n)
+    public List<List<String>> groupAnagrams_2(String[] strs) {
+        Map<String, List<String>> result = new HashMap<>();
+
+        for (String s : strs) {
+            int[] chars = new int[26];
+
+            for (Character aChar : s.toCharArray()) {
+                int indexOfChar = aChar - 'a';
+                chars[indexOfChar] = chars[indexOfChar] + 1;
+            }
+
+            String key = Arrays.toString(chars);
+
+            if (result.containsKey(key)) {
+                List<String> anagram = result.get(key);
+                anagram.add(s);
+            } else {
+                var anagrams = new ArrayList<String>();
+                anagrams.add(s);
+                result.put(key, anagrams);
+            }
+        }
+
+        return result.values().stream().toList();
     }
 
     //over engineered
