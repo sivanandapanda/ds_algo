@@ -34,26 +34,30 @@ public class TopKthFrequentElement {
     //below solution is also known as bucket sort
     //time complexity = O(n + n) (i.e. linear time to populate the map and then linear time to populate the result array)
     //space complexity = O(n) + O(k) (i.e. space for new hashMap + result array)
-    int[] betterSolution(int[] nums, int k){
+    int[] anotherSolution(int[] nums, int k){
         var numberCountMap = new HashMap<Integer, Integer>();
         for (int currentNumber : nums) {
             var count = numberCountMap.getOrDefault(currentNumber, 0) + 1;
             numberCountMap.put(currentNumber, count);
         }
 
-        var bucket = new List[k];
+        var bucket = new ArrayList<List<Integer>>(nums.length + 1);
+        for (int i = 0; i <= nums.length; i++) {
+            bucket.add(i, new ArrayList<>());
+        }
+
         numberCountMap.forEach((key,value) -> {
-            var listOfItems = bucket[value] != null ? bucket[value] : new ArrayList<Integer>();
+            var listOfItems = bucket.get(value);
             listOfItems.add(key);
-            bucket[value] = listOfItems;
+            bucket.set(value, listOfItems);
         });
 
         var result = new int[k];
 
         int resultsFound = 0;
-        for (int i = k-1; i >= 0; i--) {
-            if (bucket[i] == null) continue;
-            for (Object fromBucket: bucket[i]) {
+        for (int i = bucket.size()-1; i >= 0; i--) {
+            if (bucket.get(i) == null) continue;
+            for (Object fromBucket: bucket.get(i)) {
                 if (fromBucket instanceof Integer) {
                     result[resultsFound++] = (int) fromBucket;
 
